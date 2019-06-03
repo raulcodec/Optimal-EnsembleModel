@@ -1,4 +1,4 @@
-# Optimal-EnsembleModel
+# Optimal-Ensemble Model using Convex Hull
 Uses predictive output of two ML classifiers and results an optimal ensemble model giving higher or equivalent prediction
 
 Background -
