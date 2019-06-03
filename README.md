@@ -12,9 +12,4 @@ A defined measure on which performance is gauged , here we chose a predefined Fa
 
 Outputs of the Ensemble model -
 Prediction of the given input test data set Tx .A set of Prediction → Px {p1,p2,p3...pn}
-
 Metrics around Performance of Ensemble classifier  
-
-Model computation  -
-Predicted probabilities from the classifiers C1 & C2 were determined .Here the underlying classifiers were Random Forest Classifier & Light GBM. A predefined measure of FPRx was chosen and corresponding True Positive Rates (TPRs) were determined for the two classifiers at the FPRx. Also for the corresponding Thresholds for each of the Classifier at the given FPRx , binary classification was done .Corresponding performance metrics i.e Confusion matrix were determined.
-
