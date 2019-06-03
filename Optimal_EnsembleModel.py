@@ -1,3 +1,4 @@
+#Importing requisite libraries
 from scipy.spatial import ConvexHull
 import scipy.stats as st
 import numpy as np
@@ -15,12 +16,13 @@ import matplotlib
 matplotlib.use('agg',warn=False, force=True)
 from matplotlib import pyplot as plt
 
+## --- Defining confidence interval for range of vales----#
 def define_confidence_interval(arr_values ,confidence_perct):
     interval_start ,interval_end =st.t.interval(confidence_perct, len(arr_values) - 1, loc=np.mean(arr_values),
                                                  scale=st.sem(arr_values))
     return interval_start, interval_end
 
-
+##---At a given vertex point of the classifier , corresponding binary prediction arrays --#
 def binary_preds(vertex_point,y_pred_clf1,y_pred_clf2,clf_arr):
     if (vertex_point[3] == 1.0):
         thres = vertex_point[2]
@@ -164,6 +166,8 @@ def convex_hull_plot(y_test, y_clf_1, y_clf_2, clf_name1, clf_name2, path, outpu
     print "Area under model 1 :"+str(auc_clf1)
     print "Area under model 2 :" + str(auc_clf2 )
     print "Area under Hull: "+str(hull.volume + 0.5)
+
+
 # Generating Achievable PR plot for the underlying two base classifiers
 def achievable_prcurve_plot(y_test, y_pred_clf1, y_pred_clf2, y_pred_clf1_bin, y_pred_clf2_bin,clf_name1, clf_name2, path,
                             output_to_file=False):
@@ -319,7 +323,8 @@ def achievable_prcurve_plot(y_test, y_pred_clf1, y_pred_clf2, y_pred_clf1_bin, y
     plt.savefig(str(path) + "/AchievablePR_Curve.png", bbox_inches='tight')
     plt.close()
 
-# Ensemble Model using base classifiers and their predicted probabilities & binary predicts as input on the FPR chosen
+    
+##--- Ensemble Model using base classifiers and their predicted probabilities & binary predicts as input on the FPR chosen
 def ensemble_modular(y_test, y_pred_clf1, y_pred_clf2, y_pred_clf1_bin, y_pred_clf2_bin, fpr_chosen,
                      output_to_file=False):
     print " In Ensemble Model"
